@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJ Copiers - Video Creation Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .poster {
+            width: 800px;
+            height: 1000px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Decorative elements */
+        .poster::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .poster::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: pulse 4s ease-in-out infinite 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 16px;
+            color: #e0e7ff;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .video-icon {
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.4);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .play-button {
+            width: 0;
+            height: 0;
+            border-left: 60px solid white;
+            border-top: 35px solid transparent;
+            border-bottom: 35px solid transparent;
+            margin-left: 15px;
+        }
+
+        .service-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            line-height: 1.2;
+        }
+
+        .highlight {
+            color: #ffd93d;
+            display: block;
+            font-size: 56px;
+        }
+
+        .features {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .checkmark {
+            width: 30px;
+            height: 30px;
+            background: #4ade80;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .price-section {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            border-radius: 25px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.5);
+            transform: rotate(-1deg);
+            margin: 30px 0;
+        }
+
+        .price-label {
+            font-size: 22px;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 72px;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            line-height: 1;
+        }
+
+        .currency {
+            font-size: 48px;
+        }
+
+        .contact-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .phone {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #ff6b6b;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .cta {
+            font-size: 18px;
+            color: #4b5563;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 850px) {
+            .poster {
+                width: 100%;
+                max-width: 600px;
+                height: auto;
+                padding: 30px;
+            }
+
+            .service-title {
+                font-size: 36px;
+            }
+
+            .highlight {
+                font-size: 42px;
+            }
+
+            .price {
+                font-size: 56px;
+            }
+
+            .phone {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="content">
+            <div class="header">
+                <div class="logo-text">RJ Copiers</div>
+                <div class="tagline">Professional Video Creation</div>
+            </div>
+
+            <div class="video-icon">
+                <div class="play-button"></div>
+            </div>
+
+            <div class="service-title">
+                Professional<br>
+                <span class="highlight">Video Creation</span>
+            </div>
+
+            <div class="features">
+                <div class="feature-item">
+                    <div class="checkmark">✓</div>
+                    <span>60 Seconds High-Quality Video</span>
+                </div>
+                <div class="feature-item">
+                    <div class="checkmark">✓</div>
+                    <span>Professional Editing</span>
+                </div>
+                <div class="feature-item">
+                    <div class="checkmark">✓</div>
+                    <span>Quick Turnaround Time</span>
+                </div>
+            </div>
+
+            <div class="price-section">
+                <div class="price-label">Special Offer</div>
+                <div class="price">
+                    <span class="currency">₹</span>1999
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <div class="contact-title">Contact Us Now!</div>
+                <div class="phone">8248686180</div>
+                <div class="cta">Call or WhatsApp Today</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
